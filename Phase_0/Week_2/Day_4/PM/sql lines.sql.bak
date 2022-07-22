@@ -1,0 +1,67 @@
+select * 
+from teachers;
+
+-- melihat dosen yang salary lebih dari 50000
+SELECT * 
+from teachers 
+where salary>50000;
+
+-- melihat nama depan samuel 
+SELECT * 
+from teachers 
+where first_name = "samuel";
+
+-- melihat dosen nama depan berawal 'sam-' 
+select *
+from teachers
+where first_name like 'sam%';
+
+-- melihat nama depan berakhir "-sam"
+SELECT * 
+from teachers
+where first_name like "%sam";
+
+-- melihat nama depan mengandung "-sam-"
+SELECT * 
+from teachers 
+where first_name NOT like '%sam%';
+
+-- melihat gaji tertinggi 
+select max(salary) 
+from teachers;
+
+-- melihat identitas gaji tertinggi (cara1 tidak valid)
+select first_name, last_name,max(salary)
+from teachers;
+
+-- melihat identitas gaji tertinggi (cara 2 Error)
+select first_name,last_name, salary
+from teachers
+where salary = max(salary);
+
+-- melihat identitas gaji tertinggi (cara 3 subquery)
+
+select first_name ,last_name,salary
+from teachers
+where salary=(
+  select max(salary)
+  from teachers
+);
+
+-- melihat gaji rata-rata 
+select AVG(salary),floor(avg(salary)) ,ceil(avg(salary))
+from teachers;
+
+
+-- melihat gaji dosen tertinggi di setiap universitas 
+SELECT first_name,last_name,school,salary
+from teachers
+where (school,salary) in (
+   select school,max(salary)
+   from teachers
+   group by school);
+
+-- join 
+
+
+
