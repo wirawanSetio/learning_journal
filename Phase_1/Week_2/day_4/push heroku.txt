@@ -1,0 +1,9 @@
+heroku login -i
+heroku create nama-app
+git init
+heroku git: remote -a nama-app
+
+
+git add .
+git commit -m "komen"
+git push Heroku master
